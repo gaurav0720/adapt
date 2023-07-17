@@ -11,7 +11,7 @@ def index(request):
 
             contact_message = "<strong>An user tried to contact you.</strong><br><br>These are the contact details:<br><strong>Name:</strong>{0}<br><strong>Email:</strong>{1}<br><strong>Message:</strong>{2}".format(contact_name, contact_email, contact_message)
 
-            send_mail('New user contacted at ADAPT Marketplace', contact_message, 'adaptmarketplace@gmail.com', ['ADAPTMarketplace@uabmc.edu'], fail_silently=False)
+            send_mail('New user contacted at ADAPT Marketplace', contact_message, 'adaptmarketplace@gmail.com', ['ADAPTMarketplace@uabmc.edu', 'adaptmarketplace@gmail.com'], fail_silently=False)
 
             EmailHelper.send_uab_message('New user contacted at ADAPT Marketplace', contact_message, ['ADAPTMarketplace@uabmc.edu'])
 
