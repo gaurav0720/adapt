@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>ADAPT Marketplace</title>
+
+    <meta name="description" content="" />
+
+    {% load static %}
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/images/logo_icon.png' %}" rel="icon">
+    <link href="{% static 'assets/images/logo_icon.png' %}" rel="apple-touch-icon">
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-scholar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+
+  <style>
+    .main_div{
+      background-color: #1E6B52;
+    }
+
+    .main_div img{
+      width: 30%;
+      padding: 20px;
+    }
+
+    #showBanner{
+        padding: 7px 15px 4px 15px;
+        background-color: #ffcccb;
+        border-left: 3px solid red;
+        margin-bottom: 20px;
+    }
+    
+    @media (max-width: 767px) {
+      .main_div img{
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .main_div img{
+        width: 80%;
+      }
+    }
+  </style>
+
+  <body>
+  
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <div class="row main_div">
+      <nav class="main-nav text-center">
+        <!-- ***** Logo Start ***** -->
+        <a href="/admin/admin-index/" class=" ">
+            <img src="{% static 'assets/images/Group 61.png' %}" alt="logo">
+            <!-- <img src="{% static 'assets/images/UAB-color-with-R-standard_White.png' %}" alt="logo"> -->
+        </a>
+      </nav>
+      <div class="row">
+        <div class="text-center" style="margin-top: 50px;padding: 20px;background-color: #A69363;">
+          <h1 style="font-size: 80px;color: #EFFFFA;">Launching Soon!</h1>
+        </div>
+      </div>
+      <div class="centered">
+        <div class="main-banner" id="top">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6 align-self-center">
+                <div class="item item-1">
+                  <div class="header-text">
+                    <h2><span style="color: #A69363;">AD</span>aptive R<span style="color: #A69363;">A</span>diotherapy <span style="color: #A69363;">P</span>lanning <span style="color: #A69363;">T</span>emplate <span style="color: #A69363;">M</span>arketplace</h2>
+                    <p style="text-align: justify;justify-content: inherit;">Our mission is to provide a collaborative platform for healthcare professionals working in radiation oncology to share, evaluate, and compare radiation therapy planning templates. Our goal is to facilitate the exchange of knowledge and expertise in the field of radiation therapy treatment planning, ultimately leading to improved patient treatment plans and better standardization of practices across the field.</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-xl-6 align-self-center">
+                <div class="item item-2">
+                  <div class="header-text">
+                    <h3>Questions for us? Interested in being a beta tester?</h3>
+                    <div class="row">
+                      {% if error_message %}
+                          <div class="row" id="showBanner">
+                              <p> {{error_message}}
+                              <button onclick="showBanner()" class="btn float-end" style="margin-top: -5px;" id="showBannerCross"><strong>x</strong></button></p>
+                          </div>
+                      {% endif %}
+                        <div class="align-self-center design">
+                          <div>
+                            <form name="loginForm" action='/index/' method="POST" id="loginForm">
+                              {% csrf_token %}
+                              <div class="col-lg-12">
+                                <fieldset>
+                                  <input type="text" name="contact_name" id="contact_name" placeholder="Your Name..." autocomplete="on" required>
+                                </fieldset>
+                              </div>
+                              <div class="col-lg-12">
+                                <fieldset>
+                                  <input type="text" name="contact_email" id="contact_email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required>
+                                </fieldset>
+                              </div>
+                              <div class="col-lg-12">
+                                <fieldset>
+                                  <textarea name="contact_message" id="contact_message" placeholder="Your Message" required></textarea>
+                                </fieldset>
+                              </div>
+                              <div class="d-flex justify-content-center mb-3">
+                                <button type="submit" id="sign-in" class="btn btn-primary btn-block">
+                                  Send Message Now&nbsp;&nbsp;<i class="fa fa-angle-right"></i>
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="container">
+          <div class="col-lg-12">
+            <p>Copyright © 2023 The Univesity of Alabama at Birmingham. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/counter.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/countries.js' %}"></script>
+  
+    </body>
+  </html>
