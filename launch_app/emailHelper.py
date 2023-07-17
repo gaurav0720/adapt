@@ -20,6 +20,24 @@ class EmailHelper:
         except Exception as e:
             print(str(e))
 
+    @staticmethod
+    def send_uab_message_gmail(subject, msg, addresses, secure=False):
+        try:
+            # Prepare the email
+            mail = MIMEText(msg, 'html')
+            mail['Subject'] = subject
+            mail['From'] = 'adaptmarketplace@gmail.com'
+            mail['To'] = ', '.join(addresses)
+
+            # Set up the SMTP server and send the email
+            context = create_default_context()
+            with smtplib.SMTP("smtp.gmail.com", port=587) as server:
+                server.login("adaptmarketplace@gmail.com", "quyuhgrezsieoulu")
+                server.starttls(context=context) if secure else None
+                server.send_message(mail)
+        except Exception as e:
+            print(str(e))
+
     # @staticmethod
     # def send_uab_message(subject, msg, address):
     #     EmailHelper.send_uab_message(subject, msg, [address])
