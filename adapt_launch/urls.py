@@ -18,9 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from django.views.generic import RedirectView
+from django.conf import settings # new
+from  django.conf.urls.static import static #new
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('launch_app.urls')),
     path('', RedirectView.as_view(url='adapt_launch/', permanent=True)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
